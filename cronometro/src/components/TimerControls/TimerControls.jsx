@@ -1,15 +1,19 @@
 
 
 
-export default function TimerControls({onStart, onStop}) {
+export default function TimerControls({timerOn, onStart, onStop, onReset, onLap}) {
     return <div className="timer-controls">
-        <button
-            onClick={onStart}
-        >
+        {!timerOn && <button onClick={onStart}>
             Iniciar
-        </button>
+        </button>}
+        {timerOn && <button onClick={onStop}>
+            Parar
+        </button>}
+        {timerOn && <button onClick={onLap}>
+            Voltar
+        </button>}
         <button
-            onClick={onStop}
+            onClick={onReset}
         >
             Zerar
         </button>

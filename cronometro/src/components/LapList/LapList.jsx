@@ -1,14 +1,16 @@
 
 
 
-export default function LapList() {
+export default function LapList({laps}) {
     return <div>
         <div className="timer-laps">
             <h3>Voltas:</h3>
             <ul>
-                <li>Volta 1: 01:05</li>
-                <li>Volta 2: 01:10</li>
-                <li>Volta 3: 01:15</li>
+                {laps.map((lap, index) => (
+                    <li key={index}>
+                        Volta {index + 1}: {lap}
+                    </li>
+                ))}
             </ul>
         </div>
     </div>

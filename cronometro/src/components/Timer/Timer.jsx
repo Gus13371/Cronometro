@@ -38,6 +38,16 @@ export default function Timer() {
         return interval;
     }
 
+    const resetTimer = () => {
+        setMilliseconds(0);
+        setTimerOn(false);
+        setLaps([]);
+    };
+
+    const addLap = () => {
+        setLaps([...laps, formattedTime]);
+    }
+
     useEffect(() => {
         let interval = null;
         
@@ -55,10 +65,13 @@ export default function Timer() {
                 time={formattedTime}
             />
             <TimerControls
+                timerOn={timerOn}
                 onStart={() => setTimerOn(true)}
                 onStop={() => setTimerOn(false)}
+                onReset={resetTimer}
+                onLap={addLap}
             />
-            <LapList />
+            <LapList laps={laps} />
         </div>
     )
 }
